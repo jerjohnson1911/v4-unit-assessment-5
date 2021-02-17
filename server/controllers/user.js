@@ -13,7 +13,7 @@ module.exports = {
         const hash = bcrypt.hashSync(password, salt)
         const registeredUser = await db.registered_user([username, hash, profile_pic])
         const user = registeredUser[0]
-        req.session.user = {username: user.username, profile_pic: user.profile_pic, id: user.user_id}
+        req.session.user = {username: user.username, profile_pic: user.profile_pic, id: user.id}
         return res.status(201).send(req.session.user)
     },
 
@@ -28,7 +28,7 @@ module.exports = {
         if(!isAuthenticated) {
             return res.status(403).send('Incorrect Password')
         }
-        req.session.user = {username: user.username, profile_pic: user.profile_pic, id: user.user_id}
+        req.session.user = {username: user.username, profile_pic: user.profile_pic, id: user.id}
         return res.status(201).send(req.session.user)
     },
 
@@ -40,7 +40,7 @@ module.exports = {
         }
     },
 
-    logOut: (req, res) => {
+    logout: (req, res) => {
         req.session.destroy()
         return res.sendStatus(200)
     }
