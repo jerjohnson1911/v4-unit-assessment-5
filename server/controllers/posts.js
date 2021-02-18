@@ -38,14 +38,15 @@ module.exports = {
       }
     },
     createPost: async (req, res) => {
-      const db = await req.app.get('db')
-      const {id} = req.session.user
+      const db = req.app.get('db')
+      const {id} = req.session.user 
+      // const id = 1
       const {title, img, content} = req.body
-      const date = new Date
-      if (id){
-      } 
-        db.create_post([id, title, img, content, date]) 
-      res.status(200)
+      const date = new Date()
+      if (id) {
+        await db.post.create_post([id, title, img, content, date]) 
+        res.status(200).send('Hello i am working')
+      }
 
 
     },
@@ -57,4 +58,4 @@ module.exports = {
       req.app.get('db').post.delete_post(req.params.id)
         .then(_ => res.sendStatus(200))
     }
-  }
+  } 
