@@ -20,7 +20,7 @@ class Post extends Component {
   componentDidMount() {
 
     //need help getting this to work.
-    axios.get(`/api/post/${this.props.match.params}`)
+    axios.get(`/api/post/${this.props.match.params.id}`)
       .then(res => {
         this.setState({ ...res.data, loading: false })
       })

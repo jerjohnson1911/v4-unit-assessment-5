@@ -66,7 +66,7 @@ class Dash extends Component {
 
     let mappedPosts = posts.map(post => {
       return <div className='content-box dash-post-box' key={post.post_id}>
-          <Link key={post.id} to={`../Post/Post/${post.id}`}>
+          <Link key={post.post_id} to={`/post/${post.post_id}`}>
           <h3>{post.title}</h3>
           </Link>
           {

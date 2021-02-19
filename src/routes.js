@@ -11,6 +11,6 @@ export default (
         <Route exact path='/' component={Auth} />
         <Route path='/dash' component={Dash} />
         <Route path='/form' component={Form} />
-        <Route path='/post:id' component={Post} />
+        <Route path='/post/:id' component={Post} />
     </Switch>
 )
