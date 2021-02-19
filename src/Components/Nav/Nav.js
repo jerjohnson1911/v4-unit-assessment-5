@@ -31,6 +31,7 @@ class Nav extends Component {
   }
   
   render() {
+    console.log(this.props)
       return this.props.location.pathname !== '/' &&
         <div className='nav'>
           <div className='nav-profile-container'>
@@ -54,4 +55,4 @@ class Nav extends Component {
 
 const mapStateToProps = (state) => state
 
-export default withRouter(connect(mapStateToProps, {updateUser, logout}))(Nav)
+export default withRouter(connect(mapStateToProps, {updateUser, logout})(Nav))
