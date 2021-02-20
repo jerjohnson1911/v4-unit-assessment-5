@@ -22,7 +22,7 @@ class Nav extends Component {
 
   getUser() {
     axios.get('/api/auth/me')
-    .then(res => updateUser(res.data))
+    .then(res => this.props.updateUser(res.data))
   }
   
   logout() {
@@ -43,10 +43,10 @@ class Nav extends Component {
             <p>{username}</p>
           </div>
           <div className='nav-links'>
-            <Link to='../../Dash/Dash'>
+            <Link to='/dash'>
             <img className='nav-img' src={homeLogo} alt='home' />
             </Link>
-            <Link to='../../Form/Form'>
+            <Link to='/form'>
             <img className='nav-img' src={newLogo} alt='new post' />
             </Link>
           </div>
@@ -57,6 +57,9 @@ class Nav extends Component {
   }
 }
 
-const mapStateToProps = (state) => state
+const mapStateToProps = (state) => { 
+  console.log(state)
+  return state 
+}
 
 export default withRouter(connect(mapStateToProps, {updateUser, logout})(Nav))

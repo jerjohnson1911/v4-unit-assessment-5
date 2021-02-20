@@ -35,7 +35,7 @@ module.exports = {
 
     getUser: (req, res) => {
         if(req.session.user){
-            return status(200).send(req.session.user)
+            return res.status(200).send(req.session.user)
         }else {
             res.status(404).send('Session not found.')
         }

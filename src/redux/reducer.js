@@ -23,13 +23,12 @@ export function logout(){
 }
 
 export default function reducer(state = initialState, action) {
-    const {payload} = action
-    
+        
     switch(action.type) {
         default:
             return state
         case UPDATE_USER:
-            return {...state, username: payload.username, profile_pic: payload.profile_pic}
+            return {...state, ...action.payload }
         case LOGOUT:
             return state
     }
